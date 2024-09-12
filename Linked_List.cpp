@@ -1,3 +1,15 @@
+/*
+Linked List
+Linear DS | each node(data, pointer to next node) | Non-Contigous
+Used in: Stack, Queue, Graphs, Hash Maps
+Types: Singly | Doubly | Circular
+Insertion, Deletion at beg: Ω(1)
+Insertion, Deletion at end: O(n)
+Search: O(n)
+Space: O(n)
+
+*/
+
 #include <iostream>
 using namespace std;
 
