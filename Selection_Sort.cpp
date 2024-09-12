@@ -3,6 +3,11 @@ Selection Sort
 Choose first element as largest/smallest
 put it in the first/last position
 in each loop
+
+Best Case: Ω (n^2)
+Avg Case:  θ (n^2)
+Worst Case: O (n^2)
+Space: O (1) 
 */
 
 #include <bits/stdc++.h>

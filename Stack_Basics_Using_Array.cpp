@@ -1,7 +1,8 @@
 /*
 Stack
+Linear DS | LIFO | Last element = Top
 
-Push(), Pop(), Peak(), IsEmpty(), IsFull()
+Push() -> Add to end, Pop() -> Remove from end, Peak() -> Check end, IsEmpty(), IsFull()
 Precedence(), Infix To Postfix()
 Balance Parenthesis
 Reverse the contents of Stack

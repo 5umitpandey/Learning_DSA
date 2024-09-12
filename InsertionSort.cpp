@@ -4,6 +4,11 @@ Insertion Sort
 Compare & Swap first element with the second element
 Compare & Swap second element in the second loop (i=2)
 at the end of first loop, largest and smallest are in the correct position
+
+Best Case: Ω (n)
+Avg Case:  θ (n^2)
+Worst Case: O (n^2)
+Space: O (1)
 */
 
 #include <iostream>

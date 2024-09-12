@@ -6,20 +6,32 @@ Pivot Selection (random, first, last, mid, median of 3(first, last, mid))
 Partitioning: rearranging of array on the basis of value greater (move right part) or smaller(move left)
 Recursive Sorting: keeps on putting pivot in its actual position
 
-Best Case: 
-Avg Case: 
-Worst Case: 
+Best Case: Ω (N Log (N))
+Avg Case:  θ (N Log (N))
+Worst Case: O (N^2) (Sorted Array)
+Space: O (N)
 */
 
-//Pivod as Mid element
-//Partition as Hoare's
+//Pivod as Median of three (first, mid, last) | More balanced partitions
+//Partition as Hoare's (two pointers, less swaps)
 
 #include <iostream>
 using namespace std;
 
+int MedianOfThree(int arr[], int L, int H) {
+    int mid = L + (H - L) / 2;
+    if (arr[L] > arr[mid])
+        swap(arr[L], arr[mid]);
+    if (arr[L] > arr[H])
+        swap(arr[L], arr[H]);
+    if (arr[mid] > arr[H])
+        swap(arr[mid], arr[H]);
+    return arr[mid];
+}
+
 int Partition(int arr[], int L, int H)
 {
-    int Piv = arr[L + (H-L) / 2];
+    int Piv = MedianOfThree(arr, L, H);
     int i = L - 1;
     int j = H + 1;
 

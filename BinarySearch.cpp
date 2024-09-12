@@ -1,15 +1,21 @@
 /*
 Binary search
 
-Data SHOULD be sorted.
+Array SHOULD be sorted.
 Find MID
 Divide and compare continously
 
 Iterative and Recursive Techniques
 
 function returns the location of the target number
+
+Time complexity: O(1), O(logn), O(logn)
+Best Case: Ω (1)
+Avg Case:  θ (logn)
+Worst Case: O (logn)
+Space: O (1)
 */
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 int Iterative_BinarySearch(int arr[], int low, int high, int k )

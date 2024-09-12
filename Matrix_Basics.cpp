@@ -7,7 +7,7 @@ Matrix Transpose
 #include <iostream>
 using namespace std;
 
-void Matrix_Multiplication(int arr1[][3], int arr2[][3], int m, int n, int x, int y, int m_arr[][3])
+void Matrix_Multiplication(int arr1[][3], int arr2[][3], int m, int n, int m_arr[][3])
 {   
     for( int i=0; i<m; i++ )
     {
@@ -67,7 +67,7 @@ int main()
     int m_arr[3][3];
 
     cout << "Multiplied Matrix is: \n";
-    Matrix_Multiplication(arr1, arr2, m, n, x, y, m_arr);
+    Matrix_Multiplication(arr1, arr2, m, n, m_arr);
     PrintArray(m_arr, m, n);
 
     int arr3[3][3] = {
