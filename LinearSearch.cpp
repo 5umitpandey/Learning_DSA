@@ -4,6 +4,11 @@ Simple iteration from 0 to n
 untill we found the desired target number
 
 function returns the location of the target number
+
+Best Case: Ω (1)
+Avg Case:  θ (n)
+Worst Case: O (n)
+Space: O (1)
 */
 
 int LinearSearch(int arr[], int n, int k )

@@ -5,6 +5,11 @@ Divide, Conquer & Merge
 Divide array in half till we get two elements
 Compare and swap those two elements
 merge the swapped elements back in the array
+
+Best Case: Ω (N Log (N))
+Avg Case:  θ (N Log (N))
+Worst Case: O (N Log (N))
+Space: O (N)
 */
 
 #include <iostream>
