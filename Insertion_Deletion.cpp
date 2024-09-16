@@ -1,13 +1,26 @@
-#include <bits/stdc++.h>
+/*
+Array
+
+Array Creation      : O(n)
+Find Element        : O(n)
+Insert Element      : O(n)
+Remove Element      : O(n)
+Reverse Array       : O(n)
+Remove Duplicates   : O(n logn)
+Alternate Swapping  : O(n)    
+*/
+
+#include <iostream>
 using namespace std;
 
-//Print Array
+// Print Array
 void PrintArray(int arr[], int n)
 {
-    for(int i=0; i<n; i++)
+    for(int i = 0; i < n; i++)
     {
         cout << arr[i] << " ";
     }
+    cout << endl;
 }
 
 //Find Element Function
@@ -21,7 +34,7 @@ int findElement(int arr[], int n, int key)
 }
 
 //Insert Function
-void insertElement(int arr[], int& n, int x, int pos) {
+void insertElement(int arr[], int &n, int x, int pos) {
     // Ensure the position is within the bounds
     if (pos < 0 || pos > n) {
         cout << "Invalid position!" << endl;
@@ -41,7 +54,7 @@ void insertElement(int arr[], int& n, int x, int pos) {
 }
 
 //Delete Function
-void DeleteElement(int arr[], int& n, int key)
+void DeleteElement(int arr[], int &n, int key)
 {
     int pos = findElement(arr, n, key);
 
@@ -71,29 +84,32 @@ void ReverseArray(int arr[], int start, int end)
     ReverseArray(arr, start + 1, end - 1);
 }
 
-//Remove Duplicate
-void RemoveDuplicates(int arr[], int n)
+// Remove Duplicates
+int RemoveDuplicates(int arr[], int n)
 {
-    if( n== 0 || n == 1 )
-        return;
-    
-    int temp[n], j = 0;
+    if (n == 0 || n == 1)
+        return n;
 
-    for(int i=0; i<n-1; i++)
+    int j = 0; // To store index of next unique element
+
+    for (int i = 0; i < n; i++)
     {
-        if( arr[i] != arr[i+1] )
-            temp[j++] = arr[i];
+        bool isDuplicate = false;
+        for (int k = 0; k < j; k++)
+        {
+            if (arr[i] == arr[k])
+            {
+                isDuplicate = true;
+                break;
+            }
+        }
+        if (!isDuplicate)
+        {
+            arr[j++] = arr[i];
+        }
     }
 
-    temp[j++] = arr[n-1];
-
-    for(int i=0; i<j; i++)
-    {
-        arr[i] = temp[i];
-    }
-
-    n = j;
-
+    return j;
 }
 
 //Alternate Swapping
@@ -154,12 +170,12 @@ int main()
         case 1:
             cout << "Enter element to insert: "; cin >> x; cout << "Enter position: "; cin >> pos;
             insertElement(arr, n, x, pos-1);
-            cout << "\nAfter Inserting " << x << " at position " << pos << ": "; PrintArray(arr, n);
+            cout << "\nAfter Inserting " << x << " at position " << pos << "\nArray is: "; PrintArray(arr, n);
             break;
         case 2:
             cout << "Enter element to delete: "; cin >> x;
             DeleteElement(arr, n, x);
-            cout << "\nAfter Deleting " << x << " from array: "; PrintArray(arr, n);
+            cout << "\nAfter Deleting " << x << " from array\nArray is: "; PrintArray(arr, n);
             break;
         case 3:
             cout << "Reversing the array";
@@ -169,13 +185,12 @@ int main()
             break;
         case 4:
             cout << "Removing Duplicates";
-            RemoveDuplicates(arr, n);
+            n = RemoveDuplicates(arr, n);
             cout << "\nAfter removing duplicates: "; PrintArray(arr, n);
             break;
         case 5:
             cout << "Swapping Alternate Elements";
-            RemoveDuplicates(arr, n);
-            n = sizeof(arr) / sizeof(arr[0]);
+            Alt_Swap(arr, n);
             cout << "\nAfter Swapping Alternate elements: "; PrintArray(arr, n);
             break;
         default:
