@@ -13,7 +13,8 @@ Auxiliary Space: O(n)
 */
 
 #include <iostream>
-#include <cstring>
+#include <string>
+
 using namespace std;
 
 #define MAX1 5
@@ -71,51 +72,48 @@ class Stack
         }
 };
 
-//Precedence Function
+// Precedence Function
 int Precedence(char op)
-{
-    if( op == '+' || op == '-' ) return 1;
-    if( op == '*' || op == '/' ) return 2;
+{   
+    if (op == '^') return 3;
+    else if (op == '+' || op == '-') return 1;
+    else if (op == '*' || op == '/') return 2;
 
     return 0;
 }
 
-void InfixToPostfix(const char* infix, char* postfix)
+void InfixToPostfix(const string& infix, string& postfix)
 {
     Stack s;
-    int k = 0;
 
-    for( int i=0; i < strlen(infix); i++)
+    for (char c : infix)
     {
-        char c = infix[i];
-
-        if( isalnum(c) )    //char or number, direct push to postfix
-            postfix[k++] = c;
-        else if( c == '(' )
+        if (isalnum(c))    // char or number, direct push to postfix
+            postfix += c;
+        else if (c == '(')
             s.Push(c);
-        else if( c == ')' )
+        else if (c == ')')
         {
-            while( !s.IsEmpty() && s.Peek() != '(' )
-                postfix[k++] = s.Pop();
-            s.Pop();    //Pop the '('
+            while (!s.IsEmpty() && s.Peek() != '(')
+                postfix += s.Pop();
+            s.Pop();    // Pop the '('
         }
-        else //If Operators (+-*/)
+        else // If Operators (+-*/)
         {
-            while( !s.IsEmpty() && Precedence(c) <= Precedence(s.Peek()))
-                postfix[k++] = s.Pop();
+            while (!s.IsEmpty() && Precedence(c) <= Precedence(s.Peek()))
+                postfix += s.Pop();
+
             s.Push(c);
         }
     }
 
-    while( !s.IsEmpty() )
+    while (!s.IsEmpty())
     {
-        postfix[k++] = s.Pop();
+        postfix += s.Pop();
     }
-
-    postfix[k] = '\0';
 }
 
-//Balance the string
+// Balance the string
 bool IsMatchingPair(char c1, char c2) 
 {
     return ((c1 == '(' && c2 == ')') ||
@@ -123,7 +121,8 @@ bool IsMatchingPair(char c1, char c2)
             (c1 == '[' && c2 == ']'));
 }
 
-bool AreParenthesesBalanced(const std::string& expr) 
+
+bool AreParenthesesBalanced(const string& expr) 
 {
     Stack s;
     for (char ch : expr) 
@@ -139,7 +138,7 @@ bool AreParenthesesBalanced(const std::string& expr)
     return s.IsEmpty();
 }
 
-//Insert element at the bottom
+// Insert element at the bottom
 void InsertAtBottom(Stack& s, int item) {
     if (s.IsEmpty()) {
         s.Push(item);
@@ -158,7 +157,6 @@ void ReverseStack(Stack& s) {
     ReverseStack(s);
     InsertAtBottom(s, top);
 }
-
 
 // Function to print the stack
 void PrintStack(Stack s) {
@@ -186,14 +184,13 @@ bool IsPostfix(const std::string& expr) {
     return operandCount == 1;
 }
 
-//Evaluation of Postfix Expr
-int EvaluatePostfix(const char* postfix) 
+// Evaluation of Postfix Expr
+int EvaluatePostfix(const std::string& postfix) 
 {
     Stack s;
-    for (int i = 0; i < strlen(postfix); i++) 
+    for (char c : postfix) 
     {
-        char c = postfix[i];
-        if(isdigit(c)) 
+        if (isdigit(c)) 
         {
             s.Push(c - '0');
         } 
@@ -212,6 +209,7 @@ int EvaluatePostfix(const char* postfix)
     }
     return s.Pop();
 }
+
 
 int main()
 {
@@ -233,8 +231,8 @@ int main()
         cout << "\nStack is Full";
     }
 
-    const char* infix = "A+B*C-D/E";
-    char postfix[MAX2];
+    string infix = "A+B*C-D/E";
+    string postfix;
 
     InfixToPostfix(infix, postfix);
 
@@ -258,8 +256,8 @@ int main()
     PrintStack(s);
     cout << endl;
     //Evaluation of Postfix expr
-    //string PostfixExpr = "23*4+";
-    string PostfixExpr = "5+1*5-1/1";
+    string PostfixExpr = "23*4+";
+    //string PostfixExpr = "5+1*5-1/1";
     
     //Check if expr is postfix or not, evaluate if yes
     if( IsPostfix(PostfixExpr) )
