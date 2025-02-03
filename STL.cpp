@@ -9,6 +9,9 @@ Stacks
 Queues
 Priority Queues
 Sets
+Multiset
+Unordered Set
+Map
 */
 
 
@@ -231,21 +234,80 @@ void Sets()
     se.insert(11);     // {3, 5, 8, 10, 11}
     se.insert(50);     // {3, 5, 8, 10, 11, 50}
 
-    auto it = se.find(3); // 0
-    auto it = se.find(6); // st.end() 
+    auto it1 = se.find(3); // 0
+    auto it2 = se.find(6); // st.end() 
 
     se.erase(5);    // Removes 5  // {3, 8, 10, 11, 50}
 
-    auto it1 = se.find(8);
-    auto it2 = se.find(50);
+    auto it3 = se.find(8);
+    auto it4 = se.find(50);
     se.erase( it1, it2 );   //Deletes from 8 to 50 // {3, 10, 11}
     
-    int cnt = se.count(1); //0
-    int cnt = se.count(3); //1
+    int cnt1 = se.count(1); //0
+    int cnt2 = se.count(3); //1
 
-    auto it = se.lower_bound(2);
-    auto it = se.upper_bound(3);
+    auto it5 = se.lower_bound(2);
+    auto it6 = se.upper_bound(3);
 }   
+
+//MultiSet
+void MultiSets()
+{
+    //Stores Duplicates as well unlike set
+
+    multiset <int> ms;
+    ms.insert(5);     // {5}
+    ms.insert(3);     // {3, 5}
+    ms.insert(3);     // {3, 5, 3}
+    ms.insert(3);     // {3, 5, 3, 3}
+    ms.insert(8);     // {3, 5, 3, 3, 8}
+    ms.insert(8);     // {3, 5, 3, 3, 8, 8}
+
+    ms.erase(1);      // Removes ALL 3  // {5, 8, 8}
+
+    cout << ms.count(8) << endl; //2
+
+    ms.erase( ms.find(8) ); //Removes ONE 8 only  // {5, 8}
+
+    //Rest same like Sets()
+}
+
+//Unordered_Set
+void UnorderedSets()
+{
+    //Unique but Random Order | O(1)
+    unordered_set <int> us;
+    us.insert(5);     // {5}
+}
+
+//Map
+void Maps()
+{
+    //Key Value Pair
+    //Unique Keys & Sorted
+
+    map <int, int> m;
+    map <int, pair<int, int> > m1;
+    map <pair<int, int>, int > m2;
+
+    m[1] = 2;
+    m.emplace( 3,1 );
+    m.insert( {2, 4} );
+
+    m2[ {2, 3} ] = 10;
+
+    for( auto it : m )
+    {
+        cout << it.first << " " << it.second << endl;
+    }
+
+    cout << m[5] << endl; //Prints 0 if key not found 
+
+    auto it = m.find(2);
+    cout << (*it).second << endl;   //Find Value at given Key
+
+
+}
 
 int main()
 {
@@ -257,6 +319,9 @@ int main()
     //Queues();
     //P_Queues();
     //Sets();
-
+    //MultiSets();
+    //UnorderedSets();
+    //Maps();
+    
     return 0;
 }
