@@ -78,6 +78,11 @@
     //O(n)
     //O(n)
 
+    //Boundary Cases:
+    //OP[0]   = Right[1]
+    //OP[n-1] = Left[n-2]
+
+    //https://www.youtube.com/watch?v=gREVHiZjXeQ
     //Approach 3 | Implace O(1) Space
     vector<int> productExceptSelf(vector<int> &nums) 
     {
@@ -86,6 +91,7 @@
         if(n<1)
             return output;
         
+        //LHS multiplication
         int product = 1;
         for(int i=0;i<n;++i)
         {
@@ -94,13 +100,13 @@
         }
         
         //Traverse from right and update output array
-        product = 1;
+        product = 1;    //stores multiplication of RHS 
         for(int i=n-1;i>0;--i)
         {
             output[i] = output[i-1]*product;
             product *= nums[i];
         }
-        output[0] = product;
+        output[0] = product;    //Boundary Case
         
         return output;
     }
