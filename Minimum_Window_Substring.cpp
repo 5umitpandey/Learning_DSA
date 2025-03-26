@@ -1,6 +1,7 @@
 //https://leetcode.com/problems/minimum-window-substring/description/
 
-// string minWindow(string s, string t) 
+// Approach 1 | BruteForce
+    // string minWindow(string s, string t) 
     // {
     //     int minLength = INT_MAX; // To store the length of the minimum window
     //     string result = "";      // To store the final result
@@ -34,6 +35,7 @@
     //O(n^3)
     //O(m)
 
+    //Approach 2 | Sliding Window Technique
     string minWindow(string s, string t) 
     {
         if (t.empty() || s.empty()) return "";
