@@ -12,6 +12,9 @@ Sets
 Multiset
 Unordered Set
 Map
+Multi Map
+Unordered Map
+Algorithms
 */
 
 
@@ -306,8 +309,43 @@ void Maps()
     auto it = m.find(2);
     cout << (*it).second << endl;   //Find Value at given Key
 
+    auto it = m.find(5); //it is iterator pointing to end if key not found
 
+    auto it = m.lower_bound(2); //First Key greater than or equal to 2
+    auto it = m.upper_bound(2); //First Key greater than 2
+
+    //erase, swap, size, empty SAME AS ABOVE
 }
+
+//MultiMap
+void MultiMaps()
+{
+    //Everything same as map, but can have multiple keys with same value (duplicate)
+    //m[key] cannot be used here, use insert() or emplace()
+}
+
+//UnorderedMap
+void UnorderedMaps()
+{
+    //Everything same as map, but unordered
+    //Same as set and unordered set
+    //works in O(1) rather than O(log n) like map
+}
+
+
+//Algorithms
+void Algorithms()
+{
+    //Sort()
+    int a[3], n; vector <int> v;
+    
+    sort(a, a+n); //for array
+    sort(a+2, a+4); // sorts only given range of the array
+    sort(a, a+n, greater<int>); //sorts in descending
+
+    sort(v.begin(), v.end()); //for vector
+}
+
 
 int main()
 {
@@ -322,6 +360,9 @@ int main()
     //MultiSets();
     //UnorderedSets();
     //Maps();
-    
+    //MultiMaps();
+    //UnorderedMaps();
+    //Algorithms();
+
     return 0;
 }
