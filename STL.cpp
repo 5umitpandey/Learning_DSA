@@ -332,6 +332,18 @@ void UnorderedMaps()
     //works in O(1) rather than O(log n) like map
 }
 
+//Comparasion function for custom sorting
+bool comp(pair<int, int> p1, pair<int, int> p2)
+{
+    if( p1.second < p2.second )
+        return true;
+    if( p1.second > p2.second )
+        return false;
+    if( p1.first > p2.first )
+        return true;
+    
+    return false;        
+}
 
 //Algorithms
 void Algorithms()
@@ -341,9 +353,26 @@ void Algorithms()
     
     sort(a, a+n); //for array
     sort(a+2, a+4); // sorts only given range of the array
-    sort(a, a+n, greater<int>); //sorts in descending
+    sort(a, a+n, greater<int>()); //sorts in descending
 
     sort(v.begin(), v.end()); //for vector
+    sort(v.begin(), v.end(), greater<int>()); //for descending
+
+    //eg for sorting in custom way
+    pair<int, int> p[] = { {1,2}, {2,1}, {4,1} };
+    /*
+    sort acc to 2nd element in asc
+    if same, sort acc to 1st element in desc
+    */
+
+    //ans = {4,1}, {2,1}, {1,2}
+
+
+    sort(p, p+n, comp);
+
+
+
+    //built in pop count
 }
 
 
@@ -362,7 +391,7 @@ int main()
     //Maps();
     //MultiMaps();
     //UnorderedMaps();
-    //Algorithms();
+    Algorithms();
 
     return 0;
 }
