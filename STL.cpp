@@ -371,8 +371,21 @@ void Algorithms()
     sort(p, p+n, comp);
 
 
-
     //built in pop count
+    int num = 7;
+    int count = __builtin_popcount(num);
+
+    long long num = 48945613284615;
+    long long count = __builtin_popcountll(num);
+
+
+    //next permutation
+    //very imp to start with 123 and not 312, otherwise it will not print all of them
+    string s = "123"; //next permutation of s is "132" //works with arr[] also
+    do{
+        cout << s << endl;
+    }while(next_permutation(s.begin(), s.end()));
+
 }
 
 
@@ -391,7 +404,7 @@ int main()
     //Maps();
     //MultiMaps();
     //UnorderedMaps();
-    Algorithms();
+    //Algorithms();
 
     return 0;
 }
