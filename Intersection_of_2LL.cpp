@@ -1,20 +1,20 @@
 //https://leetcode.com/problems/intersection-of-two-linked-lists/
 
 ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) 
+{
+    ListNode *temp;
+	while(headA != NULL)
     {
-        ListNode *temp;
-		while(headA != NULL)
+		temp = headB;
+		while(temp != NULL)
         {
-			temp = headB;
-			while(temp != NULL)
+			if(headA == temp)
             {
-				if(headA == temp)
-                {
-					return headA;
-				}
-				temp = temp -> next;
+				return headA;
 			}
-			headA = headA -> next;
+			temp = temp -> next;
 		}
-		return NULL;    
-    }
+		headA = headA -> next;
+	}
+	return NULL;    
+}
