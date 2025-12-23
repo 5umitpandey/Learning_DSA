@@ -38,4 +38,5 @@ int main() {
     cout << max_value << endl;
 
     return 0;
+
 }
